@@ -104,6 +104,12 @@ Create featured.json & products.json in public folder, read with useEfect & axio
 - featured.json: for loop to render
 - products.json: map
 
+===========================================
+Part 8: Flash Messages and State Management
+===========================================
+To achieve state that are shared across different React components, we will need a state management system, eg. Jotai (https://jotai.org/) state management library.
+
+
 
 
 
