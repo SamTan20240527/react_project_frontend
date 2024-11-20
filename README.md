@@ -109,6 +109,16 @@ Part 8: Flash Messages and State Management
 ===========================================
 To achieve state that are shared across different React components, we will need a state management system, eg. Jotai (https://jotai.org/) state management library.
 
+npm install jotai
+
+Create an atom in Jotai to represent our flash message, new file FlashMessageStore.js.
+Back in RegisterPage.jsx, import the custom hook and update handleSubmit:
+
+import { useFlashMessage } from './FlashMessageStore';
+
+Import the custom hook and add some JSX in App.jsx to render the flash message.
+
+Add message animation to styles.css
 
 
 

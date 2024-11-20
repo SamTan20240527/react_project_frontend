@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+// npm install formik
 import { Formik, Field, Form } from 'formik';
+//npm install yup
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useLocation } from 'wouter';
+// npm install jotai
+import { useFlashMessage } from './FlashMessageStore';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
@@ -35,16 +39,19 @@ function RegisterPage() {
   */
   const [, setLocation] = useLocation();
   const [showSuccess, setShowSuccess] = useState(false);
+  const { showMessage } = useFlashMessage();
   const handleSubmit = async (values, formikHelpers) => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, values);
       console.log('Registration successful:', response.data);
-      setLocation("/");
+      showMessage('Registration successful!', 'success');
 
     } catch (error) {
       console.error('Registration failed:', error.response?.data || error.message);
+      showMessage('Registration failed. Please try again.', 'error');
     } finally {
       formikHelpers.setSubmitting(false);
+      setLocation('/');
     }
   };
 
