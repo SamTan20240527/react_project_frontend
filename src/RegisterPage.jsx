@@ -1,4 +1,3 @@
-//TODO: MODIFY INPUT - REMOVE SALUTATION, COUNTRY, ADD ADDRESS
 //Part 5: Step 5: Create RegisterPage.jsx
 //Part 6: Step 2: Add formik
 //Part 6: Step 4: Add Yup
@@ -36,7 +35,7 @@ function RegisterPage() {
     const { showMessage } = useFlashMessage();
     const handleSubmit = async (values, formikHelpers) => {
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, values);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/register`, values);
             console.log('Registration successful:', response.data);
             showMessage('Registration successful!', 'success');
 
@@ -113,8 +112,8 @@ function RegisterPage() {
                             />
                             {formik.errors.address && formik.touched.address ? <div className="text-danger">{formik.errors.address}</div> : null}
                         </div>
-                        
-                         <button
+
+                        <button
                             type="submit"
                             className="btn btn-primary"
                             disabled={formik.isSubmitting}

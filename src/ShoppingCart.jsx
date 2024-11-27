@@ -1,11 +1,69 @@
 //Part 9: Step 2: Create a ShoppingCart component
-import React from 'react';
-import { useCart } from './CartStore';
-
 //Part 9: Step 5: Add modifyQuantity
 //Part 9: Step 6: Add removeFromCart
+//Part 14: Step 6: useJwt hook to get the JWT token
+//Part 14: Step 7: Allow cart update
+
+import React, { useEffect, useRef, useState } from 'react';
+import { useCart } from './CartStore';
+import { useJwt } from './UserStore';
+import axios from 'axios';
+
 const ShoppingCart = () => {
-  const { cart, getCartTotal, modifyQuantity } = useCart();
+  const { cart, getCartTotal, modifyQuantity, removeFromCart, setCartContent } = useCart();
+  const { getJwt } = useJwt();
+  const [isUpdating, setIsUpdating] = useState(false);
+  const isFirstRender = useRef(true); // Track first render
+
+  const fetchCart = async () => {
+    const jwt = getJwt();
+    try {
+      const response = await axios.get(import.meta.env.VITE_API_URL + '/api/cart', {
+        headers: {
+          Authorization: `Bearer ${jwt}`
+        }
+      });
+      console.log('Cart:', response.data);
+      setCartContent(response.data);
+    } catch (error) {
+      console.error('Error fetching cart:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCart();
+    return ()=>{console.log('cleanup')}
+  }, []);
+
+  const updateCart = async () => {
+    setIsUpdating(true);
+    const jwt = getJwt();
+    try {
+      const updatedCart = cart.map((item) => ({
+        product_id: item.product_id,
+        quantity: item.quantity
+      }));
+
+      await axios.put(import.meta.env.VITE_API_URL + '/api/cart', { cartItems: updatedCart }, {
+        headers: {
+          Authorization: `Bearer ${jwt}`
+        }
+      });
+    } catch (error) {
+      console.error('Error updating cart:', error);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return; // Skip the first render
+    }
+    updateCart();
+    return ()=>{console.log('cleanup')}
+  }, [cart]);
 
   return (
     <div className="container mt-4">
@@ -21,10 +79,17 @@ const ShoppingCart = () => {
                   <img src={item.imageUrl} alt={item.productName} className="cart-image" />
                   <h5>{item.productName}</h5>
                   <div className="d-flex align-items-center">
-                    <button className="btn btn-sm btn-secondary me-2" onClick={() => modifyQuantity(item.product_id, item.quantity - 1)}>-</button>
+                    <button className="btn btn-sm btn-secondary me-2" 
+                     onClick={() => modifyQuantity(item.product_id, item.quantity - 1)} 
+                     disabled={isUpdating}>-</button>
                     <p className="mb-0">Quantity: {item.quantity}</p>
-                    <button className="btn btn-sm btn-secondary ms-2" onClick={() => modifyQuantity(item.product_id, item.quantity + 1)}>+</button>
-                    <button className="btn btn-sm btn-danger ms-2" onClick={() => removeFromCart(item.product_id)}>Remove</button>
+                    <button className="btn btn-sm btn-secondary ms-2" 
+                     onClick={() => modifyQuantity(item.product_id, item.quantity + 1)} 
+                     disabled={isUpdating}>+</button>
+                    <button className="btn btn-sm btn-danger ms-2" 
+	                    onClick={() => removeFromCart(item.product_id)}
+	                    disabled={isUpdating}
+                    >Remove</button>
                   </div>
                 </div>
                 <span>${(item.price * item.quantity).toFixed(2)}</span>

@@ -1,5 +1,6 @@
 //Part 5: Step 2: Create Navbar.jsx
 //Part 9: Step 2: Add link to Cart under nav-item
+//Part 14: Step 3: Add Login
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
@@ -43,6 +44,9 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link href="/register" className={`nav-link ${location === '/register' ? 'active' : ''}`}>Register</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/login" className={`nav-link ${location === '/login' ? 'active' : ''}`}>Login</Link>
             </li>
             <li className="nav-item">
               <Link href="/cart" className={`nav-link ${location === '/cart' ? 'active' : ''}`}>Cart</Link>

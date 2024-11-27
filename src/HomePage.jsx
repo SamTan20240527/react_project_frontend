@@ -49,7 +49,7 @@ function HomePage() {
             </header>
 
             <main className="container my-5">
-                <h2 className="text-center mb-4">Feature of The Week</h2>
+                <h2 className="text-center mb-4">Top Picks of The Week</h2>
                 <div className="row">
                     {renderFeaturedProducts()}
                 </div>

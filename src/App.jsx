@@ -19,6 +19,7 @@
 //Part 5: Step 4: Import wouter
 //Part 5: Step 6: Include all routes
 //Part 8: Step 4: Display the flash message
+//Part 14:Step 3: Add user login
 
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
@@ -28,6 +29,8 @@ import ProductsPage from './ProductsPage';
 import RegisterPage from './RegisterPage';
 import { Route, Switch } from 'wouter';
 import { useFlashMessage } from './FlashMessageStore';
+import UserLogin from "./UserLogin";
+import ShoppingCart from "./ShoppingCart"
 
 function App() {
   const { getMessage, clearMessage } = useFlashMessage();
@@ -57,6 +60,9 @@ function App() {
         <Route path="/" component={HomePage} />
         <Route path="/products" component={ProductsPage} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/login" component={UserLogin} />
+        <Route path="/cart" component={ShoppingCart} />
+      
       </Switch>
 
       <footer className="bg-dark text-white text-center py-3">
