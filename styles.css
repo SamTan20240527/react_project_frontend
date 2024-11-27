@@ -3,6 +3,20 @@
     object-fit: cover;
 }
 
+#logo-font-1 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 100px;
+    font-style: italic;
+    color: darkorchid
+}
+
+#logo-font-2 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 30px;
+    font-style: italic;
+    color: orange
+}
+
 /* Jotai flash message visible for first 70% of the time */
 .flash-alert {
     animation: fadeOut 20s ease forwards;
@@ -18,6 +32,23 @@
     }
 
     100% {
+        opacity: 0;
+    }
+}
+
+/* Jotai flashing message */
+.flash-repeat {
+    animation: flashMessage 5s ease-in-out infinite;
+}
+
+@keyframes flashMessage {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
         opacity: 0;
     }
 }

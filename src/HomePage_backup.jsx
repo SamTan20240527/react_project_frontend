@@ -36,17 +36,17 @@ function HomePage() {
 
     return (
         <>
-            <header className="bg-primary text-white text-left py-5"
-                style={{ backgroundImage: "url('marina_bay.webp')", backgroundSize: "cover" }}>
+            <header className="bg-primary text-white text-center py-5">
                 <div className="container">
-                    <h1 className="display-4" id="logo-font-1"><strong>Sam's Souvenir Shop</strong></h1>
-                    <p className="flash-repeat" id="logo-font-2">Discover the vibrant pulse of Singapore</p>
+                    <h1 className="display-4">Welcome to E-Shop</h1>
+                    <p className="lead">Discover amazing products at unbeatable prices!</p>
                     <a href="#" className="btn btn-light btn-lg">Shop Now</a>
                 </div>
             </header>
 
             <main className="container my-5">
                 <h2 className="text-center mb-4">Featured Products</h2>
+
                 <div className="row">
                     {renderFeaturedProducts()}
                 </div>

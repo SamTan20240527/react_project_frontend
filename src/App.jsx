@@ -1,3 +1,16 @@
+//First time setup:
+//  npm init -y
+//  npm create vite@latest ./ (select React & JavaScript)
+//  npm install (whatever module required; if no argument, only package.json is created)
+//  npm install wouter (simplify routing to HomePage, etc.)
+//  npm install formik (handle forms in RegisterPage.jsx)
+//  npm install yup (validate user input in RegisterPage.jsx)
+//  npm install axios
+//  npm install jotai (flashing messages)
+//  npm install seamless-immutable (state updates for CartStore.js)
+//Subsequent re-start:
+//  npm run dev
+
 import React, { useEffect } from 'react';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
@@ -38,7 +51,7 @@ function App() {
 
       <footer className="bg-dark text-white text-center py-3">
         <div className="container">
-          <p>&copy; 2023 E-Shop. All rights reserved.</p>
+          <p>Sam Tan 2024</p>
         </div>
       </footer>
     </>

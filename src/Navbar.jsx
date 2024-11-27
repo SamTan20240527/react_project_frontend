@@ -1,5 +1,6 @@
+//
+//Part 9: Step 2: Add link to Cart under nav-item
 import React, { useState, useEffect } from 'react';
-//npm install wouter
 import { Link, useLocation } from 'wouter';
 
 function Navbar() {
@@ -42,9 +43,7 @@ function Navbar() {
               <Link href="/register" className={`nav-link ${location === '/register' ? 'active' : ''}`}>Register</Link>
             </li>
             <li className="nav-item">
-              <Link href="/cart" className={`nav-link ${location === '/cart' ? 'active' : ''}`}>
-                Cart
-              </Link>
+              <Link href="/cart" className={`nav-link ${location === '/cart' ? 'active' : ''}`}>Cart</Link>
             </li>
           </ul>
         </div>
