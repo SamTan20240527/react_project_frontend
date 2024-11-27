@@ -1,8 +1,12 @@
 //Part 9: Step 1: Create a Cart Store
+//Part 9: Step 3: Add Immutable & test data
+//Part 9: Step 3: addToCart
+//Part 9: Step 5: modifyQuantity
+//Part 9: Step 6: removeFromCart
+
 import { atom, useAtom } from 'jotai';
-//Part 9: Step 3: Create a Setter 
 import Immutable from "seamless-immutable";
-//Part 9: Step 3: Add "Immutable" and test data
+
 const initialCart = Immutable([
     {
         "id": 1,
@@ -15,19 +19,14 @@ const initialCart = Immutable([
     },
 ]);
 
-// Create an atom for the cart
 export const cartAtom = atom(initialCart);
-
-// Custom hook for cart operations
 export const useCart = () => {
     const [cart, setCart] = useAtom(cartAtom);
 
-    // Function to calculate the total price of items in the cart
-    const getCartTotal = () => {
+     const getCartTotal = () => {
         return cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
     };
 
-    //Part 9: Step 3
     const addToCart = (product) => {
         setCart((currentCart) => {
             const existingItemIndex = currentCart.findIndex(item => item.product_id === product.id);
@@ -42,8 +41,7 @@ export const useCart = () => {
         });
     };
 
-    //Part 9: Step 5
-    const modifyQuantity = (product_id, quantity) => {
+     const modifyQuantity = (product_id, quantity) => {
         setCart((currentCart) => {
             const existingItemIndex = currentCart.findIndex(item => item.product_id === product_id);
             if (existingItemIndex !== -1) {
@@ -59,7 +57,6 @@ export const useCart = () => {
         });
     }
 
-    //Part 9: Step 6
     const removeFromCart = (product_id) => {
         setCart((currentCart) => {
             return currentCart.filter(item => item.product_id !== product_id);

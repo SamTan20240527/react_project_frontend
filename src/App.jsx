@@ -1,3 +1,4 @@
+//Part 1:Setup React project, create landing page
 //First time setup:
 //  npm init -y
 //  npm create vite@latest ./ (select React & JavaScript)
@@ -11,7 +12,16 @@
 //Subsequent re-start:
 //  npm run dev
 
-import React, { useEffect } from 'react';
+//Part 2: Step 3: Import ProductCard
+//Part 3: Step 3: Import useState
+//Part 5:Step 2: Refactor Navbar
+//Part 5: Step 3: Import HomePage
+//Part 5: Step 4: Import wouter
+//Part 5: Step 6: Include all routes
+//Part 8: Step 4: Display the flash message
+
+import React, { useState, useEffect } from 'react';
+import ProductCard from './ProductCard';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import ProductsPage from './ProductsPage';
@@ -57,26 +67,5 @@ function App() {
     </>
   );
 }
-
-/* Replace with Jotai flash message
-return (
-  <>
-    <Navbar />
-    
-    <Switch>
-      <Route path="/" component={HomePage} />
-      <Route path="/products" component={ProductsPage} />
-      <Route path="/register" component={RegisterPage} />
-    </Switch>
-
-    <footer className="bg-dark text-white text-center py-3">
-      <div className="container">
-        <p>&copy; 2023 E-Shop. All rights reserved.</p>
-      </div>
-    </footer>
-  </>
-);
-}
-*/
 
 export default App;

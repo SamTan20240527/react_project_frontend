@@ -1,3 +1,5 @@
+//Part 8:Flash Messages and State Management
+
 import { atom, useAtom } from 'jotai';
 
 export const flashMessageAtom = atom({

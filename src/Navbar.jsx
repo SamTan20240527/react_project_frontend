@@ -1,10 +1,12 @@
-//
+//Part 5: Step 2: Create Navbar.jsx
 //Part 9: Step 2: Add link to Cart under nav-item
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 
 function Navbar() {
   const [isNavbarShowing, setNavbarShowing] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const syncNavbarState = () => {

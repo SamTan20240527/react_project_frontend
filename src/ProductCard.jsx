@@ -1,5 +1,7 @@
-//
+//Part 2: Create ProductCard.jsx
+//Part 3: Step 1: Add event listener
 //Part 9: Step 4: Implement Add to Cart
+
 import React from 'react';
 import { useCart } from './CartStore';
 import { useLocation } from 'wouter';

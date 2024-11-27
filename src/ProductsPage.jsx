@@ -1,5 +1,6 @@
-//
+//Part 5: Step 5: Create ProductsPage.jsx
 //Part 9: Step 4: Implement Add to Cart
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from './ProductCard';
@@ -22,7 +23,7 @@ function ProductsPage() {
 
   return (
     <div className="container my-5">
-      <h1 className="text-center mb-4">Our Products</h1>
+      <h1 className="text-center mb-4">Our Top Picks</h1>
       <div className="row">
         {products.map(product => (
           <div key={product.id} className="col-md-4 mb-4">

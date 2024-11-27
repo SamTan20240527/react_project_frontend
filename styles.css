@@ -1,3 +1,5 @@
+/* Part 8: Step 4: Add flash messages */
+
 .card-img-top {
     height: 200px;
     object-fit: cover;
@@ -17,7 +19,6 @@
     color: orange
 }
 
-/* Jotai flash message visible for first 70% of the time */
 .flash-alert {
     animation: fadeOut 20s ease forwards;
 }
@@ -36,9 +37,8 @@
     }
 }
 
-/* Jotai flashing message */
 .flash-repeat {
-    animation: flashMessage 5s ease-in-out infinite;
+    animation: flashMessage 3s ease-in-out infinite;
 }
 
 @keyframes flashMessage {
