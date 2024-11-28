@@ -20,7 +20,7 @@
 }
 
 .flash-alert {
-    animation: fadeOut 20s ease forwards;
+    animation: fadeOut 30s ease forwards;
 }
 
 @keyframes fadeOut {

@@ -12,7 +12,7 @@ function HomePage() {
     useEffect(() => {
         const fetchFeaturedProducts = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
+                const response = await axios.get('/featured.json');
                 setFeaturedProducts(response.data);
             } catch (error) {
                 console.error('Error fetching featured products:', error);
