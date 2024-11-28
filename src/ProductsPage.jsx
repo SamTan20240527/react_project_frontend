@@ -23,7 +23,7 @@ function ProductsPage() {
 
   return (
     <div className="container my-5">
-      <h1 className="text-center mb-4">Our Products</h1>
+      <h1 className="text-center mb-4">Have Your Pick!</h1>
       <div className="row">
         {products.map(product => (
           <div key={product.id} className="col-md-4 mb-4">
